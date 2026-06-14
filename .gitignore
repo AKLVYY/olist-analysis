@@ -3,11 +3,11 @@ data_raw/
 data_clean/*.csv
 outputs/bi/*.csv
 
-# Power BI files
-outputs/powerbi/*.pbix
-
 # Jupyter auto-save files
 .ipynb_checkpoints/
 
 # Local editor files
 .vscode/
+
+# Local working drafts
+_resume_work/

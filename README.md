@@ -24,7 +24,7 @@
 | Python分析过程 | notebooks/ | 包含数据理解、宽表构建、销售分析、履约评分分析、风险分层和图表导出 |
 | SQL复现脚本 | sql/ | 使用MySQL 8.0复现核心业务指标查询 |
 | 核心图表 | outputs/figures/ | README中展示的关键图表 |
-| BI分析数据表 | outputs/bi/bi_order_base.csv | 面向Power BI的数据表，包含不同分析口径标记字段 |
+| BI分析数据表 | outputs/bi/ | 面向Power BI的数据表，本地生成，GitHub仅保留目录说明 |
 | Power BI看板 | outputs/powerbi/olist_delivery_risk_dashboard.pbix | 基于BI数据表制作的可视化看板 |
 
 ## 1.项目背景
@@ -189,7 +189,7 @@ Top10州GMV分布图；
 
 用于BI工具进一步分析的outputs/bi/bi_order_base.csv。该表保留订单级宽表，并增加is_sales_sample、is_delivery_review_sample、is_risk_sample等口径标记字段，便于在不同看板页面中按分析目标过滤样本。
 
-Power BI看板文件位于outputs/powerbi/olist_delivery_risk_dashboard.pbix。
+由于bi_order_base.csv体积较大，仓库中不直接上传该CSV，只保留目录说明文件。Power BI看板文件保存在outputs/powerbi/olist_delivery_risk_dashboard.pbix，已随仓库保留。
 
 ## 5.核心发现
 
@@ -348,8 +348,10 @@ olist-analysis/
 │   └── 08_state_priority.sql
 ├── outputs/
 │   ├── bi/
-│   │   └── bi_order_base.csv
+│   │   ├── README.md
+│   │   └── bi_order_base.csv          # 本地生成，不上传GitHub
 │   ├── powerbi/
+│   │   ├── README.md
 │   │   └── olist_delivery_risk_dashboard.pbix
 │   └── figures/
 │       ├── 01_monthly_gmv_trend.png
@@ -386,9 +388,9 @@ pip install -r requirements.txt
 
 5.02_build_order_base.ipynb会生成data_clean/order_base.csv，后续分析基于该订单级宽表展开。
 
-6.06_export_figures_and_bi_data.ipynb会生成outputs/figures目录下的核心图表，以及outputs/bi/bi_order_base.csv。bi_order_base.csv保留订单级数据，并通过口径标记字段区分销售基本盘、履约评分分析和风险治理分析样本。
+6.06_export_figures_and_bi_data.ipynb会生成outputs/figures目录下的核心图表，以及outputs/bi/bi_order_base.csv。bi_order_base.csv保留订单级数据，并通过口径标记字段区分销售基本盘、履约评分分析和风险治理分析样本。该CSV体积较大，不直接上传GitHub。
 
-7.Power BI看板文件保存在outputs/powerbi/olist_delivery_risk_dashboard.pbix。该文件使用outputs/bi/bi_order_base.csv作为BI分析数据源。
+7.Power BI看板文件保存在outputs/powerbi/olist_delivery_risk_dashboard.pbix。该文件使用outputs/bi/bi_order_base.csv作为BI分析数据源；如果打开PBIX时提示本地数据源缺失，请先运行06_export_figures_and_bi_data.ipynb重新生成BI数据表。
 
 ## 12.SQL分析说明
 
