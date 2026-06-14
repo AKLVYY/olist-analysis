@@ -24,7 +24,7 @@
 | Python分析过程 | notebooks/ | 包含数据理解、宽表构建、销售分析、履约评分分析、风险分层和图表导出 |
 | SQL复现脚本 | sql/ | 使用MySQL 8.0复现核心业务指标查询 |
 | 核心图表 | outputs/figures/ | README中展示的关键图表 |
-| BI分析数据表 | outputs/bi/ | 面向Power BI的数据表，本地生成，GitHub仅保留目录说明 |
+| BI分析数据表 | outputs/bi/bi_order_base.csv | 面向Power BI的数据表，由notebook本地生成，不上传GitHub |
 | Power BI看板 | outputs/powerbi/olist_delivery_risk_dashboard.pbix | 基于BI数据表制作的可视化看板 |
 
 ## 1.项目背景
@@ -189,7 +189,7 @@ Top10州GMV分布图；
 
 用于BI工具进一步分析的outputs/bi/bi_order_base.csv。该表保留订单级宽表，并增加is_sales_sample、is_delivery_review_sample、is_risk_sample等口径标记字段，便于在不同看板页面中按分析目标过滤样本。
 
-由于bi_order_base.csv体积较大，仓库中不直接上传该CSV，只保留目录说明文件。Power BI看板文件保存在outputs/powerbi/olist_delivery_risk_dashboard.pbix，已随仓库保留。
+由于bi_order_base.csv体积较大，仓库中不直接上传该CSV；如需复现，可运行notebook重新生成。Power BI看板文件保存在outputs/powerbi/olist_delivery_risk_dashboard.pbix，已随仓库保留。
 
 ## 5.核心发现
 
@@ -323,6 +323,8 @@ Power BI
 
 ## 10.项目文件结构
 
+以下为本地完整项目结构。其中data_raw、data_clean和outputs/bi中的大CSV文件用于本地复现，不直接上传GitHub。
+
 ```text
 olist-analysis/
 ├── data_raw/
@@ -348,10 +350,8 @@ olist-analysis/
 │   └── 08_state_priority.sql
 ├── outputs/
 │   ├── bi/
-│   │   ├── README.md
 │   │   └── bi_order_base.csv          # 本地生成，不上传GitHub
 │   ├── powerbi/
-│   │   ├── README.md
 │   │   └── olist_delivery_risk_dashboard.pbix
 │   └── figures/
 │       ├── 01_monthly_gmv_trend.png
